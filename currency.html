@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор | ГК БАЗИС</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon-16x16.png" type="image/png" sizes="16x16">
+    <link rel="icon" href="favicon-32x32.png" type="image/png" sizes="32x32">
+    <style>
+        /* ОФОРМЛЕНИЕ ШАПКИ СТРАНИЦЫ */
+        .about-hero {
+            background:#022f66;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        /* Для заголовка <h1> внутри .about-hero */
+        .about-hero h1 { color: white; border: none; }
+
+        /* ОФОРМЛЕНИЕ БЛОКОВ С ИНФОРМАЦИЕЙ */
+        .about-section {
+            padding: 40px 0;
+            background: white;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* ОФОРМЛЕНИЕ КОНТЕЙНЕРА С КАРТОЧКАМИ */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        /* ОФОРМЛЕНИЕ КАРТОЧЕК С ИНФОРМАЦИЕЙ */
+        .about-card {
+            padding: 20px;
+            border-left: 4px solid #022f66;
+            background: #f8f9fa;
+        }
+
+        /* КНОПКА "НАВЕРХ" */
+        #backToTop {
+            position: fixed;
+            bottom: 90px; /* Над меню */
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: #ff9a0e;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: opacity 0.3s, transform 0.3s;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* СТИЛИ ПРИ НАВЕДЕНИИ МЫШИ НА КНОПКУ */
+        #backToTop:hover {
+            background: #022f66;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ШАПКА СТРАНИЦЫ -->
+    <header class="about-hero">
+        <div class="container">
+            <h1>ГК БАЗИС</h1>
+            <p style="font-size: 20px; opacity: 0.9;">
+                Федеральный девелопер жилой недвижимости
+            </p>
+        </div>
+    </header>
+
+<main class="container">
+    <h1 style="text-align: center; margin: 40px 0;">💱 Курс валют: Египетский фунт (EGP)</h1>
+    
+    <!-- ТЕКУЩИЙ КУРС -->
+    <div style="text-align: center; margin: 20px 0; font-size: 20px;">
+        Актуальный курс на <span id="rate-date">...</span>:
+        <strong style="font-size: 1.5rem; color: #0066cc;">1 EGP = <span id="current-rate">...</span> RUB</strong>
+    </div>
+    
+    <!-- КАЛЬКУЛЯТОР -->
+    <div class="currency-calculator">
+        <h3>Конвертер</h3>
+
+        <!-- Строка ввода суммы: 
+        <input type="number"> — поле для ввода только чисел
+        step="any" — разрешение дробных чисел-->
+        <div class="converter-row">
+            <input type="number" id="amount-input" placeholder="Введите сумму" min="0" step="any">
+        
+        </div>
+        
+        <!-- Кнопки конвертации в обе стороны  -->
+        <div style="text-align: center; margin: 10px 0;">
+            <button class="btn" id="btn-rub-to-egp">RUB → EGP</button>
+            <button class="btn" id="btn-egp-to-rub" style="margin-left: 10px;">EGP → RUB</button>
+        </div>
+        
+        <!-- Блок вывода результата -->
+        <div style="text-align: center; margin-top: 15px;">
+            Результат: <span id="result-output">Введите сумму для расчёта</span>
+        </div>
+    </div>
+    
+    <!-- График -->
+    <div class="chart-container">
+        <h3 style="text-align: center;">📊 Динамика курса за 35 дней</h3>
+        <div id="currency-chart"></div>
+        <div id="chart-info">Нажмите на столбец для просмотра деталей</div>
+    </div>
+</main>
+
+ <!-- КНОПКА "НАВЕРХ" -->
+    <button id="backToTop" title="Вернуться наверх">↑</button>
+
+    <!-- МЕНЮ -->
+    <nav class="menu-panel">
+        <ul class="menu-list">
+            <li><a href="about.html" class="menu-link active"><span class="menu-icon">🏢</span><span>О компании</span></a></li>
+            <li><a href="news.html" class="menu-link"><span class="menu-icon">📰</span><span>Новости</span></a></li>
+            <li><a href="currency.html" class="menu-link"><span class="menu-icon">💱</span><span>Курс</span></a></li>
+            <li><a href="contacts.html" class="menu-link"><span class="menu-icon">📍</span><span>Контакты</span></a></li>
+            <li><a href="video.html" class="menu-link"><span class="menu-icon">🎬</span><span>Видео</span></a></li>
+        </ul>
+    </nav>
+
+<!-- ФУТЕР САЙТА -->
+<footer class="site-footer">
+    <div class="footer-grid">
+        <div class="footer-section">
+            <h3>Контакты</h3>
+            <p>📞8-800-333-17-89</p>
+            <p>✉️ <a href="mailto:info@basis.ru">info@basis.ru</a></p>
+            <p>📍 Ханты-Мансийский Автономный округ - Югра, г Сургут, ул Ивана Захарова, д 14/2</p>
+            <p>🕒 Пн–Пт: 09:00 – 18:00 (МСК)</p>
+        </div>
+    </div>
+    
+    <div class="footer-copyright">
+        <p>© <span id="footer-year">2026</span>«ГК "Базис"». Все права защищены.</p>
+        <p style="margin-top: 5px; font-size: 0.8rem; opacity: 0.7;">Разработано в учебных целях в рамках РГЗ по дисциплине «Веб-разработка»</p>
+    </div>
+</footer>
+
+    <!-- Подключение скриптов -->
+    <script src="javascript.js"></script>
+</body>
+</html>
