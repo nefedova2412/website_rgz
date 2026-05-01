@@ -1,0 +1,329 @@
+                                                                
+                                                                /* БАЗОВЫЕ СТИЛИ ДЛЯ ВСЕХ СТРАНИЦ */
+
+/* Сброс отступов и базовые настройки */
+/* Выбирает все элементы на странице */
+* { 
+    margin: 0;              /* Убирает внешние отступы у всех элементов */
+    padding: 0;             /* Убирает внутренние отступы */
+    box-sizing: border-box; /*Учитывает padding в ширине элемента*/
+}
+
+/* Оcновные стили BODY */
+body {
+    font-family: 'Segoe UI';
+    line-height: 1.6;           /* Межстрочный интервал 160% от размера шрифта */
+    color: #022f66;
+    background-color: #f8f9fa;
+    padding-bottom: 80px;       /* Отступ снизу (компенсирует высоту фиксированного меню, чтобы контент не перекрывался) */
+}
+
+/* Контейнер для центрирования контента */
+.container {
+    max-width: 1200px;          /* Ограничивает максимальную ширину */
+    margin: 0 auto;             /* Вертикальный отступ 0, горизонтальные — автоматически (центрирование по горизонтали) */
+    padding: 0 20px;            /* Отступы 20px слева и справа */
+}
+
+/* Заголовки в фирменных цветах БАЗИС */
+h1, h2, h3 {
+    color: #022f66;
+    margin-bottom: 16px;
+}
+
+h1 { font-size: 40px; }
+h2 { font-size: 32px; border-bottom: 3px solid #022f66; padding-bottom: 8px; }
+h3 { font-size: 24px; }
+
+/* Ссылки */
+a {
+    color: #022f66;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+/* Изменение при наведении */
+a:hover {
+    color: #004499;
+    text-decoration: underline;
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;         /* Внутренние отступы: 10px сверху/снизу, 20px по бокам */
+    background:#022f66;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;            /* Курсор-«рука» при наведении  */
+    font-size: 16px;
+    transition: background 0.3s; /* Плавное изменение фона при наведении */
+}
+.btn:hover {
+    background: #022f66;
+    color: white;
+    text-decoration: none;
+}
+
+/* Изображения */
+img {
+    max-width: 100%; /* Изображение не может быть шире родителя */
+    height: auto;    /* Высота подстраивается пропорционально ширине */
+    display: block;  /* Убирает лишний отступ сниз */
+}
+
+
+
+                                                /* МЕНЮ: ФИКСИРОВАННАЯ ПАНЕЛЬ СНИЗУ */
+
+/* Контейнер меню - фиксирован внизу экрана */
+.menu-panel {
+    position: fixed;                /* Фиксирует элемент относительно окна браузера (т.е не прокручивается) */
+    bottom: 0;                      /* Прижимает к низу */
+    left: 50%;
+    transform: translateX(-50%);    /* Сдвигает элемент на 50% его собственной ширины влево */
+    background: #022f66;
+    padding: 8px 20px;
+    border-radius: 12px 12px 0 0;   /* Скругление только сверху */
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+    z-index: 1000;                  /* Поверх всего контента */
+    
+    /* Анимация увеличения при наведении */
+    transition: transform 0.3s ease, padding 0.3s ease;
+    transform-origin: bottom center;
+}
+
+/* Увеличение панели при наведении */
+.menu-panel:hover {
+    transform: translateX(-50%) scale(1.1);     /* Сохраняет центрирование (translateX) и увеличивает панель на 10% */
+    padding: 12px 25px;                         /* Увеличивает внутренние отступы — иконки и текст не «слипаются» при масштабировании */
+}
+
+/* Список иконок меню */
+.menu-list {
+    display: flex;          /* элементы выстраиваются в строку */
+    gap: 15px;              /* Промежуток 15px между пунктами меню */
+    list-style: none;       /* Убирает стандартные маркеры списка (точки) */
+    align-items: center;    /* Выравнивает иконки и текст по вертикали по центру */
+}
+
+/* Ссылки-иконки */
+.menu-link {
+    display: flex; /* элементы выстраиваются в строку */
+    flex-direction: column; /* Иконка сверху, текст снизу (вертикальное расположение) */
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 8px;
+    transition: background 0.3s;
+    font-size: 12px;
+}
+.menu-link:hover {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    text-decoration: none;
+}
+
+/* Иконки */
+.menu-icon {
+    font-size: 24px;
+    margin-bottom: 3px;
+}
+
+/* Активная страница */
+.menu-link.active {
+    background: rgba(255,255,255,0.3);
+    font-weight: bold;
+}
+
+
+
+
+                                                /* КАЛЬКУЛЯТОР */
+
+/* Стили калькулятора */
+.currency-calculator {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 20px auto;
+}
+/* Строка конвертера */
+.converter-row {
+    display: flex;  /* элементы выстраиваются в строку */
+    gap: 10px;
+    margin: 15px 0;
+    align-items: center;
+}
+/* Строка конвертера (поле ввода) */
+.converter-row input {
+    flex: 1; /* Поле ввода занимает всё доступное место в строке */
+    min-width: 150px;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 18px;
+}
+/* Строка конвертера (кнопки) */
+.converter-row button {
+    padding: 12px 20px;
+    background: #022f66;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+.converter-row button:hover {
+    background: #004499;
+}
+
+#result-output {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #022f66;
+    min-height: 24px; /* резервирует место под результат, чтобы контент не «прыгал» при появлении текста */
+    margin: 10px 0;
+}
+
+
+/* Стили графика */
+/* Контейнер графика */
+.chart-container {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 30px auto;
+    max-width: 1000px;
+}
+#currency-chart {
+    /* Столбцы выстраиваются в строку и прижимаются к низу  */
+    display: flex;
+    align-items: flex-end;
+    height: 250px;
+    gap: 2px;
+    padding: 20px 10px;
+    /* Оси графика: горизонтальная (дни) и вертикальная (курс) */
+    border-bottom: 2px solid #022f66;
+    border-left: 2px solid #022f66;
+    background: linear-gradient(to top, #f8f9fa 0%, white 100%);
+}
+/* Столбцы графика */
+.chart-bar {
+    flex: 1; /* Равная ширина для всех столбцов */
+    min-width: 8px;
+    background: linear-gradient(to top, #022f66, #4da6ff);
+    border-radius: 3px 3px 0 0;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+/* Столбцы при наведении */
+.chart-bar:hover {
+    background: linear-gradient(to top, #004499, #0066cc);
+    transform: scaleY(1.05);
+}
+/* Столбцы при нажатии */
+.chart-bar.active {
+    background: linear-gradient(to top, #cc0000, #ff4d4d);
+    box-shadow: 0 0 10px rgba(204, 0, 0, 0.5);
+}
+/* Подписи к столбцам */
+.chart-bar::after {
+    content: attr(data-date); /* Берёт текст из атрибута data-date HTML-элемента  */
+    /* Размещает подпись под столбцом */
+    position: absolute; 
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: #666;
+    white-space: nowrap;
+    display: none;
+}
+.chart-bar:hover::after {
+    display: block;
+}
+/* Блок информации о курсе */
+#chart-info {
+    text-align: center;
+    padding: 15px;
+    background: #e8f4fd;
+    border-radius: 8px;
+    margin-top: 10px;
+    min-height: 50px;
+}
+
+
+                                                        /* ФУТЕР */
+
+.site-footer {
+    background: linear-gradient(180deg, #003366 0%, #001a33 100%);
+    color: #cbd5e1;
+    padding: 50px 0 40px;
+    margin-top: 60px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+/* Сетка футера */
+.footer-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.footer-section h3 {
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 20px;
+    border-left: 4px solid #0066cc;
+    padding-left: 12px;
+}
+
+.footer-section p {
+    margin-bottom: 10px;
+}
+
+.footer-logo {
+    max-width: 160px;
+    margin-bottom: 15px;
+    filter: brightness(0) invert(1); /* Делает логотип белым для темного фона */
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a, .footer-section a {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover, .footer-section a:hover {
+    color: #4da6ff;
+    padding-left: 6px;
+}
+
+.footer-copyright {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+}
+
