@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <!-- Настраивает отображение на мобильном -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>О компании | ГК БАЗИС</title>
+    <link rel="stylesheet" href="main.css">
+    <!-- ПОДКЛЮЧЕНИЕ ФАВИКОНОВ -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon-16x16.png" type="image/png" sizes="16x16">
+    <link rel="icon" href="favicon-32x32.png" type="image/png" sizes="32x32">
+    <style>
+        /* ОФОРМЛЕНИЕ ШАПКИ СТРАНИЦЫ */
+        .about-hero {
+            background:#022f66;         /* Фон */
+            color: white;               /* Цвет шрифта */
+            padding: 60px 20px;           /* Внутренние отступы: 60px сверху/снизу, 20px слева/справа */
+            text-align: center;           /* Текст по центру */
+            margin-bottom: 40px;          /* Отступ 40px снизу */
+        }
+        /* Для заголовка <h1> внутри .about-hero */
+        .about-hero h1 { color: white; border: none; }
+
+        /* ОФОРМЛЕНИЕ БЛОКОВ С ИНФОРМАЦИЕЙ */
+        .about-section {
+            padding: 40px 40px;
+            background: white;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* ОФОРМЛЕНИЕ КОНТЕЙНЕРА С КАРТОЧКАМИ */
+        .about-grid {
+            display: grid;                  /* система вёрстки сетками */
+                            /* Создаёт адаптивные колонки: 
+                            auto-fit — автоматически помещает столько колонок, сколько влезает
+                            minmax(300px, 1fr) — каждая колонка минимум 300px, максимум — равная доля (1fr) */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px;                   /* Промежуток 30px между карточками */
+            margin: 30px 0;             /* Отступы 30px сверху и снизу у всей сетки */
+        }
+        
+        /* ОФОРМЛЕНИЕ КАРТОЧЕК С ИНФОРМАЦИЕЙ */
+        .about-card {
+            padding: 20px;
+            border-left: 4px solid #022f66; /* Синяя вертикальная полоса слева */
+            background: #f8f9fa;
+        }
+        
+        /* КНОПКА "НАВЕРХ" */
+        #backToTop {                    /* элемент с id="backToTop" */
+            position: fixed;            /* Фиксирует элемент относительно окна браузера */
+            bottom: 90px;               /* Отступ 90px от низа экрана */
+            right: 20px;                /* Отступ 20px от правого края экрана */
+            /* Размер кнопки: 50×50 пикселей (круг) */
+            width: 50px;
+            height: 50px;
+            background: #ff9a0e;
+            color: white;
+            border: none;
+            border-radius: 50%;         /* Делает кнопку идеально круглой (50% от ширины/высоты) */
+            font-size: 24px;            /* Размер стрелки */
+            cursor: pointer;            /* При наведении курсор меняется на «руку» */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: opacity 0.3s, transform 0.3s;
+            opacity: 0;                 /* Изначально кнопку не видно */
+            pointer-events: none;       /* Запрещает клики по невидимой кнопке */
+            z-index: 999;               /* Помещает кнопку поверх всех элементов */
+            /* Центрирует стрелку внутри круглой кнопки */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* СТИЛИ ПРИ НАВЕДЕНИИ МЫШИ НА КНОПКУ */
+        #backToTop:hover {
+            background: #022f66;
+            transform: translateY(-3px); /* Кнопка немного «подпрыгивает» вверх на 3px */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ШАПКА СТРАНИЦЫ -->
+    <header class="about-hero">
+        <!-- Вставляем логотип компании -->
+        <img src="logo.bmp" width="20%">  <!-- Ширина 20% от родительского контейнера -->
+        <div class="container">
+            <h1>О компании ГК БАЗИС</h1>
+            <p style="font-size: 20px; opacity: 0.9;">
+                Федеральный девелопер жилой недвижимости
+            </p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- БЛОК С ИСТОРИЕЙ -->
+        <section class="about-section">
+            <h2>📜 История создания</h2>
+            <h3>Федеральный девелопер жилой недвижимости</h3>
+            <p>
+                <b>14 лет</b> ГК Базис создает экосистемы жилья нового поколения. 
+                Трансформируя опыт реализации панельных, кирпичных и монолитных 
+                решений в мощный драйвер инноваций. Мы с энтузиазмом прокладываем 
+                новый путь, осваивая сложные и перспективные ниши возведения 
+                объектов на намывных грунтах, что ярко демонстрирует наш проект 
+                в районе Гидронамыв в городе Ханты-Мансийск.
+            </p>
+            <div class="about-card">
+                    <p><b>14 лет</b> на рынке</p>
+                    <p><b>6</b> городов присутствия</p>
+                    <p><b>9</b> ЖК реализовано</p>
+                    <p><b>3 место</b> по ХМАО в ЕРЗ.РФ по объему строительства</p>
+                    <p><b>210 000 м²</b> введено в эксплуатацию</p>
+                    <p><b>255 000 м²</b> в стадии проектирования</p>
+                </div>
+        </section>
+        <!-- БЛОК С ПРОЕКТАМИ -->
+        <section class="about-section">
+            <h2>🚀 Проекты</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>ЖК Столица</h3>
+                    <p><b>СОВРЕМЕННАЯ ГОРОДСКАЯ ЗАСТРОЙКА </b></p>
+                    <p>Столичная архитектура домов без давления высотной застройки. 
+                    Каскадная композиция домов, создающая легко читаемый силуэт.</p>
+                     <p style="color: #ff9a0e;">Сдан, 750 квартир</p>
+                </div>
+                <div class="about-card">
+                    <h3>ЭкоКвартал Нега</h3>
+                    <p><b>Жизнь в городе рядом с природой</b></p>
+                    <p>Среда, в которой хочется остаться жить.
+                    Квартал сочетает загородное настроение и богатую социальную инфраструктуру.
+                    Сохраняем баланс между городским удобством и природным спокойствием.</p>
+                    <p style="color: #ff9a0e;">Сдача 4 кв. 2026 года, 205 квартир</p>
+                </div>
+                <div class="about-card">
+                    <h3>Столица Прайм</h3>
+                    <p><b>Здесь комфорт превращается в статус</b></p>
+                    <p>Жилой квартал бизнес-класса с продуманной концепцией, 
+                    ориентированной на комфорт и функциональность пространства.
+                    Современный навесной фасад с перфорированными алюминиевыми 
+                    элементами и эффектной вечерней подсветкой.
+                    Приватный двор без машин и сквозного доступа.
+                    Квартиры с видом на город и личными террасами для отдыха.</p>
+                    <p style="color: #ff9a0e;">Сдача скоро...</p>
+                </div>
+                <div class="about-card">
+                    <h3>Мечта парк</h3>
+                    <p><b>Квартиры комфорт-класса в современном и быстро развивающемся районе Сургута</b></p>
+                    <p>Микрорайон включает строительство 10 кварталов поэтапно.
+                    В рамках развития планируется строительство детского сада, школы, 
+                    автостоянки, а также парка с прудом.</p>
+                    <p style="color: #ff9a0e;">Сдача скоро...</p>
+                </div>
+            </div>
+        </section>
+        <!-- БЛОК С РЕАЛИЗОВАННЫМИ ПРОЕКТАМИ -->
+        <section class="about-section">
+            <h2>🏆 Реализованные проекты</h2>
+            <p style="font-size: 30px; text-align: center;">🌱ЖК "Березка"    🌇ЖК "Заря"    💌ЖК "Любимый"</p>
+            <p style="font-size: 30px; text-align: center;">🌊ЖК "River House"    🗺️ЖК "Сердце Сибири"    🏖️ЖК "Набережный"</p>
+            
+            <img src="проект.webp" 
+                 alt="Офис ГК БАЗИС в Москве" 
+                 style="margin: 20px auto; border-radius: 10px;">
+        </section>
+    </main>
+
+    <!-- КНОПКА "НАВЕРХ" (фиксирована в правом нижнем углу) -->
+    <button id="backToTop" title="Вернуться наверх">↑</button>
+
+    <!-- МЕНЮ -->
+    <nav class="menu-panel">
+        <ul class="menu-list">
+            <li><a href="about.html" class="menu-link active"><span class="menu-icon">🏢</span><span>О компании</span></a></li>
+            <li><a href="news.html" class="menu-link"><span class="menu-icon">📰</span><span>Новости</span></a></li>
+            <li><a href="currency.html" class="menu-link"><span class="menu-icon">💱</span><span>Курс</span></a></li>
+            <li><a href="contacts.html" class="menu-link"><span class="menu-icon">📍</span><span>Контакты</span></a></li>
+            <li><a href="video.html" class="menu-link"><span class="menu-icon">🎬</span><span>Видео</span></a></li>
+        </ul>
+    </nav>
+
+<!-- ФУТЕР САЙТА -->
+<footer class="site-footer">
+    <div class="footer-grid">
+        <div class="footer-section">
+            <h3>Контакты</h3>
+            <p>📞8-800-333-17-89</p>
+            <p>✉️ <a href="mailto:info@basis.ru">info@basis.ru</a></p>
+            <p>📍 Ханты-Мансийский Автономный округ - Югра, г Сургут, ул Ивана Захарова, д 14/2</p>
+            <p>🕒 Пн–Пт: 09:00 – 18:00 (МСК)</p>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <p>© <span id="footer-year">2026</span> «ГК "Базис"». Все права защищены.</p>
+        <p style="margin-top: 5px; font-size: 0.8rem; opacity: 0.7;">Разработано в учебных целях в рамках РГЗ по дисциплине «Веб-разработка»</p>
+    </div>
+</footer>
+
+    <!-- ПОДКЛЮЧЕНИЕ СКРИПТОВ -->
+    <script src="javascript.js"></script>
+    
+</body>
+</html>
